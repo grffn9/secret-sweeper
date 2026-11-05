@@ -1,0 +1,7 @@
+reports/
+__pycache__/
+*.egg-info/
+.env
+.env.*
+!.env.example
+vscode-extension/dist/

@@ -1,0 +1,6 @@
+- id: secret-sweep
+  name: secret-sweep (block commits that add secrets)
+  entry: secretsweep check
+  language: python
+  pass_filenames: false
+  stages: [pre-commit]

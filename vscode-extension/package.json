@@ -1,0 +1,89 @@
+{
+  "name": "secret-sweep",
+  "displayName": "Secret Sweep",
+  "description": "Blocks commits that contain secrets, highlights API keys and wallet keys as you type, and scans whole GitHub accounts.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "secrets",
+    "security",
+    "pre-commit",
+    "api key",
+    "git hook"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "secretSweep.installHook",
+        "title": "Block commits with secrets in this repo",
+        "category": "Secret Sweep"
+      },
+      {
+        "command": "secretSweep.installHookGlobal",
+        "title": "Block commits with secrets in every repo on this machine",
+        "category": "Secret Sweep"
+      },
+      {
+        "command": "secretSweep.uninstallHook",
+        "title": "Remove commit protection from this repo",
+        "category": "Secret Sweep"
+      },
+      {
+        "command": "secretSweep.uninstallHookGlobal",
+        "title": "Remove machine-wide commit protection",
+        "category": "Secret Sweep"
+      },
+      {
+        "command": "secretSweep.scanRepo",
+        "title": "Scan this repo (including history)",
+        "category": "Secret Sweep"
+      },
+      {
+        "command": "secretSweep.scanGitHub",
+        "title": "Scan a GitHub user, org, or repo",
+        "category": "Secret Sweep"
+      },
+      {
+        "command": "secretSweep.fixRepo",
+        "title": "Fix this repo (move secrets to .env)",
+        "category": "Secret Sweep"
+      }
+    ],
+    "configuration": {
+      "title": "Secret Sweep",
+      "properties": {
+        "secretSweep.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Python 3.9+ executable. Empty means `python` on Windows and `python3` elsewhere."
+        },
+        "secretSweep.toolPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to secret-sweep's run.py. Empty means the copy bundled with this extension."
+        },
+        "secretSweep.highlightSecrets": {
+          "type": "boolean",
+          "default": true,
+          "description": "Underline secrets in open files as you type."
+        },
+        "secretSweep.offerHookInstall": {
+          "type": "boolean",
+          "default": true,
+          "description": "Offer to install the pre-commit hook when a repo without it is opened."
+        }
+      }
+    }
+  }
+}

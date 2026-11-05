@@ -1,0 +1,16 @@
+[project]
+name = "secret-sweep"
+version = "0.1.0"
+description = "Find and remove leaked secrets across every repository a GitHub user owns."
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+secretsweep = "secretsweep.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["secretsweep"]
